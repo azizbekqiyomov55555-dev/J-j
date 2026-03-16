@@ -12,7 +12,7 @@ let users = {
 }
 
 /* Sizning Checkout yoki payment API kalitingiz */
-const API_KEY = "API_KEY_BU_YERDA"
+const API_KEY = "ODZlZjQ2YjY4NDViZDdjMDZiODE"
 
 /* 1️⃣ To‘lov yaratish */
 app.post("/create-payment", async (req,res)=>{
