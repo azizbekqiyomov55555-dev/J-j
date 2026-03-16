@@ -2,28 +2,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Balans tizimi</title>
+<title>Balans sayti</title>
 
 <style>
 body{
-font-family:Arial;
 background:#0f172a;
 color:white;
+font-family:Arial;
 text-align:center;
 }
 
 .box{
 background:#1e293b;
-padding:20px;
+width:320px;
 margin:20px auto;
-width:300px;
+padding:20px;
 border-radius:10px;
 }
 
 button{
-padding:10px 20px;
-border:none;
 background:#22c55e;
+border:none;
+padding:10px 20px;
 color:white;
 border-radius:6px;
 cursor:pointer;
@@ -37,6 +37,7 @@ margin:10px;
 </style>
 
 </head>
+
 <body>
 
 <h1>💰 Balans tizimi</h1>
@@ -47,26 +48,30 @@ margin:10px;
 </div>
 
 <div class="box">
-<h2>Balansni to‘ldirish</h2>
+
+<h3>Balansni to‘ldirish</h3>
 
 <input type="number" id="amount" placeholder="Summani kiriting">
 
 <br>
 
-<button onclick="addBalance()">To‘ldirish</button>
+<button onclick="pay()">To‘lov qilish</button>
+
 </div>
 
 <div class="box">
-<h2>To‘lovlar tarixi</h2>
+
+<h3>To‘lovlar tarixi</h3>
+
 <ul id="history"></ul>
+
 </div>
 
 <script>
 
 let balance = 0
-let history = []
 
-function addBalance(){
+function pay(){
 
 let amount = document.getElementById("amount").value
 
@@ -75,31 +80,31 @@ alert("Summani kiriting")
 return
 }
 
-balance += Number(amount)
-
-history.push(amount + " UZS qo‘shildi")
-
-document.getElementById("balance").innerText = balance + " UZS"
-
-showHistory()
+openPayment(amount)
 
 }
 
-function showHistory(){
+function openPayment(amount){
 
-let list = document.getElementById("history")
+alert("Bu yerda Checkout yoki Payme ochiladi")
 
-list.innerHTML = ""
+// keyin API orqali balans qo‘shiladi
 
-history.forEach(function(item){
+addBalance(amount)
+
+}
+
+function addBalance(amount){
+
+balance += Number(amount)
+
+document.getElementById("balance").innerText = balance + " UZS"
 
 let li = document.createElement("li")
 
-li.innerText = item
+li.innerText = amount + " UZS to‘landi"
 
-list.appendChild(li)
-
-})
+document.getElementById("history").appendChild(li)
 
 }
 
